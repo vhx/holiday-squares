@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
 }
@@ -23,7 +23,7 @@
   background-color: #9bbcf2;
 }
 
-.square-blank .value{
+.square-blank .value {
   color: black;
   font-style: italic;
 }
