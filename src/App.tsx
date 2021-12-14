@@ -1,45 +1,62 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./App.css";
+
+const valueFor = (value: null | "X" | "O"): string => {
+  if (value === "X") {
+    return "❌";
+  } else if (value === "O") {
+    return "🔵";
+  } else {
+    return "👀";
+  }
+};
+
+const Square = () => {
+  const [value, setValue] = useState<null | "X" | "O">(null);
+  const [name, setName] = useState<string>("");
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className={`square square-${value || "blank"}`}>
+      <div className="value">{valueFor(value)}</div>
+      <button onClick={() => setValue("X")}>X</button>
+      <button onClick={() => setValue("O")}>O</button>
+      <button onClick={() => setValue(null)}>clear</button>
+      <div>
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          placeholder="Star name..."
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+const App = () => {
+  return (
+    <div>
+      <h1>OTT Holiday Squares</h1>
+      <div className="board">
+        <div className="row">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+        <div className="row">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+        <div className="row">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
