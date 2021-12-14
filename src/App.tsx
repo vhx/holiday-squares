@@ -21,13 +21,16 @@ const Square = () => {
       <div className="value">{valueFor(value)}</div>
       <button onClick={() => setValue("X")}>X</button>
       <button onClick={() => setValue("O")}>O</button>
-      <button onClick={() => setValue(null)}>clear</button>
+      <button disabled={!value} onClick={() => setValue(null)}>
+        clear
+      </button>
+
       <div>
         <input
           type="text"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder="Star..."
+          placeholder="Star name goes here"
         />
       </div>
     </div>
