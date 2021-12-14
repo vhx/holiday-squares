@@ -27,7 +27,7 @@ const Square = () => {
           type="text"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder="Star name..."
+          placeholder="Star..."
         />
       </div>
     </div>
